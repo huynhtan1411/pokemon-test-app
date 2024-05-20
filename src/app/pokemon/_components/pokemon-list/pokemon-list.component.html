@@ -1,0 +1,92 @@
+<h1 style="display: flex; justify-content: center">Test Pokemon App</h1>
+<div style="margin-left: 10px">
+  Type Pokemon
+  <nz-select
+    nzShowSearch
+    nzAllowClear
+    nzPlaceHolder="Select type"
+    [(ngModel)]="data.selectedType"
+    (ngModelChange)="onSearch($event)"
+  >
+    @for(item of data.listType; track item.id) {
+    <nz-option [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
+    }
+  </nz-select>
+</div>
+
+<nz-table
+  [nzData]="data.list"
+  [nzShowPagination]="false"
+  (nzQueryParams)="onQueryParamsChange($event, 'sort')"
+  [nzScroll]="{ y: '60vh', x: '900px' }"
+  style="min-height: 70vh"
+>
+  <thead>
+    <tr>
+      @for(header of tableHeader; track header.title) {
+      <th
+        [nzSortFn]="true"
+        [nzSortOrder]="header?.sortOrder || null"
+        [nzColumnKey]="header.title"
+        [nzShowSort]="header.sort"
+        [id]="header.title"
+      >
+        {{ header.title }}
+      </th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for(item of data.list; track item.id) {
+    <tr>
+      <td>{{ item.number }}</td>
+      <td>
+        <a (click)="showDetail(item.id)">
+          {{ item.name }}
+        </a>
+      </td>
+      <td>{{ convertType(item.type_1, item.type_2) }}</td>
+      <td>{{ item.total }}</td>
+      <td>{{ item.hp }}</td>
+      <td>{{ item.attack }}</td>
+      <td>{{ item.defense }}</td>
+      <td>{{ item.sp_atk }}</td>
+      <td>{{ item.sp_def }}</td>
+      <td>{{ item.speed }}</td>
+    </tr>
+    }
+  </tbody>
+</nz-table>
+<nz-pagination
+  [nzPageSize]="data.param.pageSize || 10"
+  [nzPageIndex]="data.param.pageNumber || 1"
+  [nzShowSizeChanger]="true"
+  [nzTotal]="data.param.totalElements || 0"
+  (nzPageIndexChange)="onQueryParamsChange($event, 'page')"
+  [nzPageSizeOptions]="[10, 20, 30, 40, 50, 100]"
+  (nzPageSizeChange)="onQueryParamsChange($event, 'size')"
+>
+</nz-pagination>
+
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="Pokemon's Information"
+  [nzCloseIcon]="''"
+>
+  <ng-container *nzModalContent> </ng-container>
+  <ng-container *nzModalFooter>
+    <div>
+      <button
+        nz-button
+        nzType="default"
+        nzShape="round"
+        (click)="isVisible = false"
+      >
+        {{ "Close" }}
+      </button>
+    </div>
+  </ng-container>
+</nz-modal>
+<div style="display: flex; justify-content: end">
+  App Test ©2024 Implement By Tan Huynh
+</div>
