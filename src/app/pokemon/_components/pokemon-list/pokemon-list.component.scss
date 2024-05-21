@@ -1,0 +1,81 @@
+.pokemon-card {
+  border-radius: 8px;
+  border-style: solid;
+  border-width: medium;
+  background: linear-gradient(to right, white, wheat);
+}
+
+.background {
+  text-align: center;
+  background: linear-gradient(to right, white, wheat);
+}
+
+.image {
+  width: 180px;
+  height: 200px;
+}
+
+.pokemon-name {
+  font-weight: bolder;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.pokemon-type-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.pokemon-type {
+  background: linear-gradient(to right, wheat, white, wheat);
+  padding: 7px;
+  border-radius: 10px;
+  width: 150px;
+  display: block;
+  text-align: center;
+  position: relative;
+  top: -35px;
+  font-weight: bolder;
+}
+
+.pokemon-hp {
+  background: linear-gradient(to right, wheat, white);
+  padding: 5px;
+  border-radius: 10px;
+  width: 100px;
+  display: block;
+  text-align: center;
+  position: relative;
+  top: -250px;
+  left: 240px;
+  font-weight: bolder;
+}
+
+.pokemon-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  p {
+    font-weight: bolder;
+    letter-spacing: 1px;
+  }
+}
+
+.filter {
+  padding: 20px;
+}
+
+.title-header {
+  padding: 5px;
+  text-align: center;
+}
+
+.footer {
+  text-align: end;
+  font-weight: bolder;
+}
+
+nz-select {
+  width: 200px;
+}

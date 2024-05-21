@@ -1,6 +1,6 @@
-<h1 style="display: flex; justify-content: center">Test Pokemon App</h1>
-<div style="margin-left: 10px">
-  Type Pokemon
+<h1 class="title-header">Test Pokemon App</h1>
+<div class="filter">
+  <p>Filter Type Pokemon</p>
   <nz-select
     nzShowSearch
     nzAllowClear
@@ -70,10 +70,39 @@
 
 <nz-modal
   [(nzVisible)]="isVisible"
-  nzTitle="Pokemon's Information"
+  nzTitle="Pokemon Card"
   [nzCloseIcon]="''"
+  [nzWidth]="'400px'"
 >
-  <ng-container *nzModalContent> </ng-container>
+  <ng-container *nzModalContent>
+    <div class="pokemon-card">
+      <div class="container-top">
+        <h3 class="pokemon-name">
+          {{ data.pokemonDetail.name }}
+        </h3>
+        <div class="background">
+          <img [src]="data.imageUrl" alt="pokemon" class="image" />
+        </div>
+        <span class="pokemon-hp">
+          {{ "HP : " + data.pokemonDetail.hp }}
+        </span>
+      </div>
+      <div class="content">
+        <div class="pokemon-type-container">
+          <span class="pokemon-type">
+            {{
+              convertType(data.pokemonDetail.type_1, data.pokemonDetail.type_2)
+            }}
+          </span>
+        </div>
+        <div class="pokemon-stats">
+          <p>{{ "Attack : " + data.pokemonDetail.attack }}</p>
+          <p>{{ "Defense : " + data.pokemonDetail.defense }}</p>
+          <p>{{ "Speed : " + data.pokemonDetail.speed }}</p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
   <ng-container *nzModalFooter>
     <div>
       <button
@@ -87,6 +116,4 @@
     </div>
   </ng-container>
 </nz-modal>
-<div style="display: flex; justify-content: end">
-  App Test ©2024 Implement By Tan Huynh
-</div>
+<div class="footer">App Test ©2024 Implement By Tan Huynh</div>

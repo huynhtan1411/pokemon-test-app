@@ -49,6 +49,7 @@ export class PokemonListComponent implements OnInit {
     },
     selectedType: '',
     listType: [] as IPokemonType[],
+    imageUrl: '',
   };
 
   sort = {
@@ -212,6 +213,7 @@ export class PokemonListComponent implements OnInit {
         (resp: any) => {
           if (resp) {
             this.data.pokemonDetail = resp.data;
+            this.data.imageUrl = `https://api.vandvietnam.com/api/pokemon-api/pokemons/${resp.data.id}/sprite`;
           }
         },
         (error) => {
@@ -220,9 +222,9 @@ export class PokemonListComponent implements OnInit {
         },
         () => {
           this.loading.detail = false;
+          this.isVisible = true;
         }
       );
-    this.isVisible = true;
   }
 
   onClose() {
