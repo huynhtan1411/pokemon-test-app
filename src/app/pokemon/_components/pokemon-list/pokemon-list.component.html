@@ -7,6 +7,7 @@
     nzPlaceHolder="Select type"
     [(ngModel)]="data.selectedType"
     (ngModelChange)="onSearch($event)"
+    [nzLoading]="loading.type"
   >
     @for(item of data.listType; track item.id) {
     <nz-option [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
@@ -15,6 +16,7 @@
 </div>
 
 <nz-table
+  [nzLoading]="loading.list"
   [nzData]="data.list"
   [nzShowPagination]="false"
   (nzQueryParams)="onQueryParamsChange($event, 'sort')"
